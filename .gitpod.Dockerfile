@@ -2,9 +2,11 @@ FROM gitpod/workspace-full
                     
 USER gitpod
 
-RUN sudo apt-get -q install htop
-RUN sudo apt-get -q update && sudo apt-get install -yq android-sdk
+RUN sudo apt-get -q update
+RUN sudo apt-get install -yq openjdk-8-jdk
+RUN sudo apt-get install -yq android-sdk
 RUN npm -g install cordova
+
 # Install custom tools, runtime, etc. using apt-get
 # For example, the command below would install "bastet" - a command line tetris clone:
 #
