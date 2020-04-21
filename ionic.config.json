@@ -1,0 +1,7 @@
+{
+  "name": "cordova-garconapp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
