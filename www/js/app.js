@@ -5,8 +5,8 @@ $(document).ready(function () {
 $('.collection')
     .on('click', '.collection-item', function () {
         var adicionado = this.firstChild.textContent + ' adicionado!';
-        M.toast({html: adicionado, classes: 'rounded'});
-        
+        M.toast({ html: adicionado, classes: 'rounded' });
+
         var $badge = $('.badge', this);
         if ($badge.length === 0) {
             $badge = $('<span class="badge brown-text">0</span>').appendTo(this);
@@ -33,4 +33,18 @@ $('#confirmar').on('click', function () {
 $('.acao-limpar').on('click', function () {
     $('#numero-mesa').val('');
     $('.badge').remove();
+});
+
+$('.scan-qrcode').on('click', function () {
+    cordova.plugins.barcodeScanner.scan(
+        function(resultado) {
+            if (resultado.text) {
+                M.toast({ html: 'Mesa ' + resultado.text, classes: 'rounded' });
+                $('#numero-mesa').val(resultado.text);
+            }
+        },
+        function(error) {
+            M.toast({ html: 'Ocorreu um erro na leitura: ' + error, classes: 'rounded red-text' });
+        }
+    );
 });
